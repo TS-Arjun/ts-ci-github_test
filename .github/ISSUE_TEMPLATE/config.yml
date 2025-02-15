@@ -2,8 +2,8 @@ blank_issues_enabled: false
 contact_links:
 
   - name: Question or Feature Request
-    url: https://github.com/thoughtspot/ts-ci-github/discussions
+    url: https://github.com/TS-Arjun/ts-ci-github_test/discussions
 
   - name: Read the Dev Tools EULA
-    url: https://github.com/thoughtspot/ts-ci-github/blob/master/LICENSE
+    url: https://github.com/TS-Arjun/ts-ci-github_test/blob/master/LICENSE
     about: These Dev Tools are provided as-is as an accomodation to you, the client.
