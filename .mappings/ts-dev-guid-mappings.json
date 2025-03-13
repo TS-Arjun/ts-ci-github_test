@@ -5,21 +5,21 @@
     }
   },
   "mapping": {
-    "5262993d-d0d3-49db-81c3-43b0b6ec7fb7": null,
-    "85996e7d-96d8-42e8-a0b0-4465a9c6a95f": null,
-    "2b658b5a-e172-46f8-9057-b21a8db5e45f": null,
-    "c26d9f70-358b-403d-bc0c-bc2dc3630c8b": null,
-    "2393fc7a-8ecd-4537-9255-15c35bfdca47": null,
-    "8e1a97e8-da4b-401a-88ae-0aa4db2d1544": null,
-    "536514e8-870f-4e62-b0b5-c19436382098": null,
-    "6564a25f-df89-4411-920f-5be1472f5138": null,
-    "96ac14d3-51a6-4f09-a526-eb6ff82fdd88": null,
-    "7fe6d4b7-8b1e-4947-b3c0-21aa850d72da": null,
-    "103279e1-2af4-43bc-be69-4ee51a256fc0": null,
-    "26e735f0-9e24-435d-8e32-5c0d0a83bb01": null,
-    "f87eaa97-a23a-4a06-acc2-dce42b56d5f4": null,
-    "146794d9-c6ab-4c8f-a9cd-2ed44e77ff5a": null,
-    "cd8cb024-47c0-42a7-9e9a-a71bcf04ac27": null,
+    "5262993d-d0d3-49db-81c3-43b0b6ec7fb7": "d59e40e6-1529-4e41-b7f6-0c676814cc94",
+    "85996e7d-96d8-42e8-a0b0-4465a9c6a95f": "99a4e218-5138-49ac-82c7-ab1842d2ce42",
+    "2b658b5a-e172-46f8-9057-b21a8db5e45f": "c34159fe-0ab1-4b11-b475-b517abc828b5",
+    "c26d9f70-358b-403d-bc0c-bc2dc3630c8b": "853d7f47-0416-4f27-9452-e6f11f955535",
+    "2393fc7a-8ecd-4537-9255-15c35bfdca47": "1579d26d-59ae-45bf-a02e-95a06474ae07",
+    "8e1a97e8-da4b-401a-88ae-0aa4db2d1544": "3cbb5c21-ad06-44f1-9432-e6a53ee6cf30",
+    "536514e8-870f-4e62-b0b5-c19436382098": "5609808f-5bbc-4819-bd6b-7f128f983e94",
+    "6564a25f-df89-4411-920f-5be1472f5138": "3c6b4331-343d-473d-bfba-a38bca567bdb",
+    "96ac14d3-51a6-4f09-a526-eb6ff82fdd88": "adfdbe70-0ed7-4f3b-b8cd-ed3d357ad6af",
+    "7fe6d4b7-8b1e-4947-b3c0-21aa850d72da": "9918769e-da8d-4b7e-968f-05cb1f4a129b",
+    "103279e1-2af4-43bc-be69-4ee51a256fc0": "86d08d81-bf35-438d-a271-88ff490c1573",
+    "26e735f0-9e24-435d-8e32-5c0d0a83bb01": "bc0860f0-b2b7-4f41-be58-c2cf7b417697",
+    "f87eaa97-a23a-4a06-acc2-dce42b56d5f4": "5fb24017-abd2-49ba-98ed-2422b5bb3248",
+    "146794d9-c6ab-4c8f-a9cd-2ed44e77ff5a": "8b0e4b12-ffde-430c-8313-1fb72a4449ab",
+    "cd8cb024-47c0-42a7-9e9a-a71bcf04ac27": "06d0a2d9-8047-4fa1-bb50-7352a26d0ae3",
     "a988252e-9c87-40aa-8dae-41f805fa51ac": null
   },
   "additional_mapping": {},
@@ -28,6 +28,18 @@
       "by": "cs_tools/1.6.1/scriptability/checkpoint",
       "at": "2025-03-13T01:13:26.442851+00:00",
       "mode": "EXPORT",
+      "status": "OK"
+    },
+    {
+      "by": "cs_tools/1.6.1/scriptability/checkpoint",
+      "at": "2025-03-13T01:13:26.442851+00:00",
+      "mode": "EXPORT",
+      "status": "OK"
+    },
+    {
+      "by": "cs_tools/1.6.1/scriptability/deploy",
+      "at": "2025-03-13T01:19:05.762186+00:00",
+      "mode": "IMPORT",
       "status": "OK"
     }
   ]
