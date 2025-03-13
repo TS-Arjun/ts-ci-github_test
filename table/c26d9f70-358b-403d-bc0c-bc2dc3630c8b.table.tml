@@ -1,0 +1,55 @@
+guid: c26d9f70-358b-403d-bc0c-bc2dc3630c8b
+table:
+  name: DIMPRODUCTSUBCATEGORY
+  db: ADVENTUREWORKS_TRAINING
+  schema: PUBLIC
+  db_table: DIMPRODUCTSUBCATEGORY
+  connection:
+    name: Connection
+    fqn: a988252e-9c87-40aa-8dae-41f805fa51ac
+  columns:
+  - name: PRODUCTSUBCATEGORYKEY
+    db_column_name: PRODUCTSUBCATEGORYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PRODUCTSUBCATEGORYALTERNATEKEY
+    db_column_name: PRODUCTSUBCATEGORYALTERNATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ENGLISHPRODUCTSUBCATEGORYNAME
+    db_column_name: ENGLISHPRODUCTSUBCATEGORYNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SPANISHPRODUCTSUBCATEGORYNAME
+    db_column_name: SPANISHPRODUCTSUBCATEGORYNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FRENCHPRODUCTSUBCATEGORYNAME
+    db_column_name: FRENCHPRODUCTSUBCATEGORYNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PRODUCTCATEGORYKEY
+    db_column_name: PRODUCTCATEGORYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  properties:
+    sage_config:
+      is_sage_enabled: false

@@ -1,0 +1,83 @@
+guid: 2b658b5a-e172-46f8-9057-b21a8db5e45f
+table:
+  name: DIMGEOGRAPHY
+  db: ADVENTUREWORKS_TRAINING
+  schema: PUBLIC
+  db_table: DIMGEOGRAPHY
+  connection:
+    name: Connection
+    fqn: a988252e-9c87-40aa-8dae-41f805fa51ac
+  columns:
+  - name: GEOGRAPHYKEY
+    db_column_name: GEOGRAPHYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CITY
+    db_column_name: CITY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STATEPROVINCECODE
+    db_column_name: STATEPROVINCECODE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STATEPROVINCENAME
+    db_column_name: STATEPROVINCENAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: COUNTRYREGIONCODE
+    db_column_name: COUNTRYREGIONCODE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ENGLISHCOUNTRYREGIONNAME
+    db_column_name: ENGLISHCOUNTRYREGIONNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SPANISHCOUNTRYREGIONNAME
+    db_column_name: SPANISHCOUNTRYREGIONNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FRENCHCOUNTRYREGIONNAME
+    db_column_name: FRENCHCOUNTRYREGIONNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: POSTALCODE
+    db_column_name: POSTALCODE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESTERRITORYKEY
+    db_column_name: SALESTERRITORYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IPADDRESSLOCATOR
+    db_column_name: IPADDRESSLOCATOR
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  properties:
+    sage_config:
+      is_sage_enabled: false

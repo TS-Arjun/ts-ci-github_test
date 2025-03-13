@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "cs_tools": {
+      "extract_environment": "ts-dev"
+    }
+  },
+  "mapping": {
+    "5262993d-d0d3-49db-81c3-43b0b6ec7fb7": null,
+    "85996e7d-96d8-42e8-a0b0-4465a9c6a95f": null,
+    "2b658b5a-e172-46f8-9057-b21a8db5e45f": null,
+    "c26d9f70-358b-403d-bc0c-bc2dc3630c8b": null,
+    "2393fc7a-8ecd-4537-9255-15c35bfdca47": null,
+    "8e1a97e8-da4b-401a-88ae-0aa4db2d1544": null,
+    "536514e8-870f-4e62-b0b5-c19436382098": null,
+    "6564a25f-df89-4411-920f-5be1472f5138": null,
+    "96ac14d3-51a6-4f09-a526-eb6ff82fdd88": null,
+    "7fe6d4b7-8b1e-4947-b3c0-21aa850d72da": null,
+    "103279e1-2af4-43bc-be69-4ee51a256fc0": null,
+    "26e735f0-9e24-435d-8e32-5c0d0a83bb01": null,
+    "f87eaa97-a23a-4a06-acc2-dce42b56d5f4": null,
+    "146794d9-c6ab-4c8f-a9cd-2ed44e77ff5a": null,
+    "cd8cb024-47c0-42a7-9e9a-a71bcf04ac27": null,
+    "a988252e-9c87-40aa-8dae-41f805fa51ac": null
+  },
+  "additional_mapping": {},
+  "history": [
+    {
+      "by": "cs_tools/1.6.1/scriptability/checkpoint",
+      "at": "2025-03-13T01:13:26.442851+00:00",
+      "mode": "EXPORT",
+      "status": "OK"
+    }
+  ]
+}

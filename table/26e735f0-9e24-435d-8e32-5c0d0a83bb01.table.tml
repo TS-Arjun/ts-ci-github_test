@@ -1,0 +1,47 @@
+guid: 26e735f0-9e24-435d-8e32-5c0d0a83bb01
+table:
+  name: DIMSALESTERRITORY
+  db: ADVENTUREWORKS_TRAINING
+  schema: PUBLIC
+  db_table: DIMSALESTERRITORY
+  connection:
+    name: Connection
+    fqn: a988252e-9c87-40aa-8dae-41f805fa51ac
+  columns:
+  - name: SALESTERRITORYKEY
+    db_column_name: SALESTERRITORYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SALESTERRITORYALTERNATEKEY
+    db_column_name: SALESTERRITORYALTERNATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SALESTERRITORYREGION
+    db_column_name: SALESTERRITORYREGION
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESTERRITORYCOUNTRY
+    db_column_name: SALESTERRITORYCOUNTRY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESTERRITORYGROUP
+    db_column_name: SALESTERRITORYGROUP
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  properties:
+    sage_config:
+      is_sage_enabled: false

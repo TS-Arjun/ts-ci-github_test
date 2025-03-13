@@ -1,0 +1,152 @@
+guid: f87eaa97-a23a-4a06-acc2-dce42b56d5f4
+table:
+  name: DIMDATE
+  db: ADVENTUREWORKS_TRAINING
+  schema: PUBLIC
+  db_table: DIMDATE
+  connection:
+    name: Connection
+    fqn: a988252e-9c87-40aa-8dae-41f805fa51ac
+  columns:
+  - name: DATEKEY
+    db_column_name: DATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FULLDATEALTERNATEKEY
+    db_column_name: FULLDATEALTERNATEKEY
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: DAYNUMBEROFWEEK
+    db_column_name: DAYNUMBEROFWEEK
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ENGLISHDAYNAMEOFWEEK
+    db_column_name: ENGLISHDAYNAMEOFWEEK
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SPANISHDAYNAMEOFWEEK
+    db_column_name: SPANISHDAYNAMEOFWEEK
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FRENCHDAYNAMEOFWEEK
+    db_column_name: FRENCHDAYNAMEOFWEEK
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DAYNUMBEROFMONTH
+    db_column_name: DAYNUMBEROFMONTH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DAYNUMBEROFYEAR
+    db_column_name: DAYNUMBEROFYEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: WEEKNUMBEROFYEAR
+    db_column_name: WEEKNUMBEROFYEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ENGLISHMONTHNAME
+    db_column_name: ENGLISHMONTHNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SPANISHMONTHNAME
+    db_column_name: SPANISHMONTHNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FRENCHMONTHNAME
+    db_column_name: FRENCHMONTHNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MONTHNUMBEROFYEAR
+    db_column_name: MONTHNUMBEROFYEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CALENDARQUARTER
+    db_column_name: CALENDARQUARTER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CALENDARYEAR
+    db_column_name: CALENDARYEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CALENDARSEMESTER
+    db_column_name: CALENDARSEMESTER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FISCALQUARTER
+    db_column_name: FISCALQUARTER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FISCALYEAR
+    db_column_name: FISCALYEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FISCALSEMESTER
+    db_column_name: FISCALSEMESTER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  properties:
+    sage_config:
+      is_sage_enabled: false

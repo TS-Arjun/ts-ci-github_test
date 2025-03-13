@@ -1,0 +1,212 @@
+guid: 2393fc7a-8ecd-4537-9255-15c35bfdca47
+table:
+  name: FACTINTERNETSALES
+  db: ADVENTUREWORKS_TRAINING
+  schema: PUBLIC
+  db_table: FACTINTERNETSALES
+  connection:
+    name: Connection
+    fqn: a988252e-9c87-40aa-8dae-41f805fa51ac
+  columns:
+  - name: PRODUCTKEY
+    db_column_name: PRODUCTKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ORDERDATEKEY
+    db_column_name: ORDERDATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DUEDATEKEY
+    db_column_name: DUEDATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SHIPDATEKEY
+    db_column_name: SHIPDATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CUSTOMERKEY
+    db_column_name: CUSTOMERKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PROMOTIONKEY
+    db_column_name: PROMOTIONKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CURRENCYKEY
+    db_column_name: CURRENCYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SALESTERRITORYKEY
+    db_column_name: SALESTERRITORYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SALESORDERNUMBER
+    db_column_name: SALESORDERNUMBER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESORDERLINENUMBER
+    db_column_name: SALESORDERLINENUMBER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: REVISIONNUMBER
+    db_column_name: REVISIONNUMBER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ORDERQUANTITY
+    db_column_name: ORDERQUANTITY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: UNITPRICE
+    db_column_name: UNITPRICE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: EXTENDEDAMOUNT
+    db_column_name: EXTENDEDAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: UNITPRICEDISCOUNTPCT
+    db_column_name: UNITPRICEDISCOUNTPCT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DISCOUNTAMOUNT
+    db_column_name: DISCOUNTAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRODUCTSTANDARDCOST
+    db_column_name: PRODUCTSTANDARDCOST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TOTALPRODUCTCOST
+    db_column_name: TOTALPRODUCTCOST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SALESAMOUNT
+    db_column_name: SALESAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TAXAMT
+    db_column_name: TAXAMT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FREIGHT
+    db_column_name: FREIGHT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CARRIERTRACKINGNUMBER
+    db_column_name: CARRIERTRACKINGNUMBER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CUSTOMERPONUMBER
+    db_column_name: CUSTOMERPONUMBER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ORDERDATE
+    db_column_name: ORDERDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: DUEDATE
+    db_column_name: DUEDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: SHIPDATE
+    db_column_name: SHIPDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  properties:
+    sage_config:
+      is_sage_enabled: false

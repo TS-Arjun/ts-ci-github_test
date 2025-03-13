@@ -1,0 +1,211 @@
+guid: 5262993d-d0d3-49db-81c3-43b0b6ec7fb7
+table:
+  name: DIMEMPLOYEE
+  db: ADVENTUREWORKS_TRAINING
+  schema: PUBLIC
+  db_table: DIMEMPLOYEE
+  connection:
+    name: Connection
+    fqn: a988252e-9c87-40aa-8dae-41f805fa51ac
+  columns:
+  - name: EMPLOYEEKEY
+    db_column_name: EMPLOYEEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PARENTEMPLOYEEKEY
+    db_column_name: PARENTEMPLOYEEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: EMPLOYEENATIONALIDALTERNATEKEY
+    db_column_name: EMPLOYEENATIONALIDALTERNATEKEY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PARENTEMPLOYEENATIONALIDALTERNATEKEY
+    db_column_name: PARENTEMPLOYEENATIONALIDALTERNATEKEY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESTERRITORYKEY
+    db_column_name: SALESTERRITORYKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FIRSTNAME
+    db_column_name: FIRSTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LASTNAME
+    db_column_name: LASTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MIDDLENAME
+    db_column_name: MIDDLENAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NAMESTYLE
+    db_column_name: NAMESTYLE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: TITLE
+    db_column_name: TITLE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: HIREDATE
+    db_column_name: HIREDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: BIRTHDATE
+    db_column_name: BIRTHDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LOGINID
+    db_column_name: LOGINID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EMAILADDRESS
+    db_column_name: EMAILADDRESS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PHONE
+    db_column_name: PHONE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MARITALSTATUS
+    db_column_name: MARITALSTATUS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EMERGENCYCONTACTNAME
+    db_column_name: EMERGENCYCONTACTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EMERGENCYCONTACTPHONE
+    db_column_name: EMERGENCYCONTACTPHONE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALARIEDFLAG
+    db_column_name: SALARIEDFLAG
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: GENDER
+    db_column_name: GENDER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PAYFREQUENCY
+    db_column_name: PAYFREQUENCY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: BASERATE
+    db_column_name: BASERATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VACATIONHOURS
+    db_column_name: VACATIONHOURS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SICKLEAVEHOURS
+    db_column_name: SICKLEAVEHOURS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CURRENTFLAG
+    db_column_name: CURRENTFLAG
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: SALESPERSONFLAG
+    db_column_name: SALESPERSONFLAG
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: DEPARTMENTNAME
+    db_column_name: DEPARTMENTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STARTDATE
+    db_column_name: STARTDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: ENDDATE
+    db_column_name: ENDDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: STATUS
+    db_column_name: STATUS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  properties:
+    sage_config:
+      is_sage_enabled: false

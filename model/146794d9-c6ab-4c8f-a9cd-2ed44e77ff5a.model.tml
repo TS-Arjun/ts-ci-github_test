@@ -1,0 +1,103 @@
+guid: 146794d9-c6ab-4c8f-a9cd-2ed44e77ff5a
+model:
+  name: Product Inventory - AW
+  model_tables:
+  - name: FACTPRODUCTINVENTORY
+    fqn: 96ac14d3-51a6-4f09-a526-eb6ff82fdd88
+    joins:
+    - with: DIMPRODUCT
+      'on': '[FACTPRODUCTINVENTORY::PRODUCTKEY] = [DIMPRODUCT::PRODUCTKEY]'
+      type: INNER
+      cardinality: MANY_TO_ONE
+  - name: DIMPRODUCT
+    fqn: 536514e8-870f-4e62-b0b5-c19436382098
+    joins:
+    - with: DIMPRODUCTSUBCATEGORY
+      'on': '[DIMPRODUCT::PRODUCTSUBCATEGORYKEY] = [DIMPRODUCTSUBCATEGORY::PRODUCTSUBCATEGORYKEY]'
+      type: INNER
+      cardinality: MANY_TO_ONE
+  - name: DIMPRODUCTSUBCATEGORY
+    fqn: c26d9f70-358b-403d-bc0c-bc2dc3630c8b
+    joins:
+    - with: DIMPRODUCTCATEGORY
+      'on': '[DIMPRODUCTSUBCATEGORY::PRODUCTCATEGORYKEY] = [DIMPRODUCTCATEGORY::PRODUCTCATEGORYKEY]'
+      type: INNER
+      cardinality: MANY_TO_ONE
+  - name: DIMPRODUCTCATEGORY
+    fqn: 7fe6d4b7-8b1e-4947-b3c0-21aa850d72da
+  columns:
+  - name: Unit Cost
+    column_id: FACTPRODUCTINVENTORY::UNITCOST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Product Key
+    column_id: DIMPRODUCT::PRODUCTKEY
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Units Balance
+    column_id: FACTPRODUCTINVENTORY::UNITSBALANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Units In
+    column_id: FACTPRODUCTINVENTORY::UNITSIN
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Units Out
+    column_id: FACTPRODUCTINVENTORY::UNITSOUT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Movement Date
+    column_id: FACTPRODUCTINVENTORY::MOVEMENTDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Product Name
+    column_id: DIMPRODUCT::ENGLISHPRODUCTNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Dealer price
+    column_id: DIMPRODUCT::DEALERPRICE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: List price
+    column_id: DIMPRODUCT::LISTPRICE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Model Name
+    column_id: DIMPRODUCT::MODELNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Product Line
+    column_id: DIMPRODUCT::PRODUCTLINE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Status
+    column_id: DIMPRODUCT::STATUS
+    properties:
+      column_type: ATTRIBUTE
+  - name: Product Category Name
+    column_id: DIMPRODUCTCATEGORY::ENGLISHPRODUCTCATEGORYNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Product Subcategory Name
+    column_id: DIMPRODUCTSUBCATEGORY::ENGLISHPRODUCTSUBCATEGORYNAME
+    properties:
+      column_type: ATTRIBUTE
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    sage_config:
+      is_sage_enabled: true

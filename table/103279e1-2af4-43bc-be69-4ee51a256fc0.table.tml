@@ -1,0 +1,68 @@
+guid: 103279e1-2af4-43bc-be69-4ee51a256fc0
+table:
+  name: FACTSALESQUOTA
+  db: ADVENTUREWORKS_TRAINING
+  schema: PUBLIC
+  db_table: FACTSALESQUOTA
+  connection:
+    name: Connection
+    fqn: a988252e-9c87-40aa-8dae-41f805fa51ac
+  columns:
+  - name: SALESQUOTAKEY
+    db_column_name: SALESQUOTAKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: EMPLOYEEKEY
+    db_column_name: EMPLOYEEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DATEKEY
+    db_column_name: DATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CALENDARYEAR
+    db_column_name: CALENDARYEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CALENDARQUARTER
+    db_column_name: CALENDARQUARTER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SALESAMOUNTQUOTA
+    db_column_name: SALESAMOUNTQUOTA
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DATE
+    db_column_name: DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  properties:
+    sage_config:
+      is_sage_enabled: false

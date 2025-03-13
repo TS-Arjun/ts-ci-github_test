@@ -1,0 +1,40 @@
+guid: cd8cb024-47c0-42a7-9e9a-a71bcf04ac27
+answer:
+  name: test - 101
+  tables:
+  - id: Product Inventory - AW
+    name: Product Inventory - AW
+    fqn: 146794d9-c6ab-4c8f-a9cd-2ed44e77ff5a
+  search_query: "[List price] [Product Category Name] [Model Name]"
+  answer_columns:
+  - name: Model Name
+  - name: Product Category Name
+  - name: Total List price
+  table:
+    table_columns:
+    - column_id: Model Name
+      show_headline: false
+    - column_id: Product Category Name
+      show_headline: false
+    - column_id: Total List price
+      show_headline: false
+    ordered_column_ids:
+    - Product Category Name
+    - Model Name
+    - Total List price
+    client_state: ""
+    client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+  chart:
+    type: COLUMN
+    chart_columns:
+    - column_id: Model Name
+    - column_id: Product Category Name
+    - column_id: Total List price
+    axis_configs:
+    - x:
+      - Model Name
+      "y":
+      - Total List price
+    client_state: ""
+    client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_OFF\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product Category Name\",\"columnProperty\": {}},{\"columnId\": \"Model Name\",\"columnProperty\": {}},{\"columnId\": \"Total List price\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"7d5ddce4-0e70-41e9-bf0e-72d5f1f51254\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total List price\"],\"isOpposite\": false}},{\"id\": \"652d25d9-b01b-4b19-9cf3-2064a7b5ab74\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Model Name\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total List price\",\"color\": \"#2E75F0\"}]}"
+  display_mode: CHART_MODE

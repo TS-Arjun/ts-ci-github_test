@@ -1,0 +1,17 @@
+guid: a988252e-9c87-40aa-8dae-41f805fa51ac
+connection:
+  name: Connection
+  type: RDBMS_SNOWFLAKE
+  authentication_type: SERVICE_ACCOUNT
+  properties:
+  - key: accountName
+    value: thoughtspot_partner
+  - key: user
+    value: training_user
+  - key: password
+    value: ""
+  - key: role
+    value: bi_users
+  - key: warehouse
+    value: training_wh
+  description: ""
