@@ -1,42 +1,68 @@
 name: Fetch and Commit
 
 on:    
-  # ALLOW TRIGGERING ACTION MANUALLY
   workflow_dispatch:
+    inputs:
+      cs_tools_version:
+        description: "The CS Tools version to target for a manual run."
+        required: false
+        type: string
 
-  # ALLOW SCHEDULING THE JOB
-  #   EVERY DAY AT 5:20 AM UTC
-  # schedule:
-  #   - cron: "20 5 * * *"
+      env_name:
+        description: "The name of the environment you're exporting TML from."
+        required: false
+        type: string
 
+      source_org:
+        description: "The Org to switch to before extracting TML."
+        required: true
+        type: string
+        default: Primary
+
+      metadata_types:
+        description: "The type(s) of TML to export, commad separated."
+        required: true
+        type: string
+        default: ALL
+
+      tags:
+        description: "TML tagged with these name(s), commad separated."
+        required: false
+        type: string
+
+      directory:
+        description: "Directory to save TML files to."
+        required: true
+        type: string
+        default: .
 
 env:
-    # CS TOOLS IS COMMAND LINE LIBRARY WRAPPING TS APIS
-    # https://thoughtspot.github.io/cs_tools/tools/git/
-    CS_TOOLS_VERSION: v1.5.13b1
+    CS_TOOLS_VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.cs_tools_version || 'v1.6.1' }}
     CS_TOOLS_THOUGHTSPOT__URL: ${{ secrets.DEV_THOUGHTSPOT_URL }}
     CS_TOOLS_THOUGHTSPOT__USERNAME: ${{ secrets.DEV_THOUGHTSPOT_USERNAME }}
     CS_TOOLS_THOUGHTSPOT__SECRET_KEY: ${{ secrets.DEV_THOUGHTSPOT_SECRET_KEY }}
-    CS_TOOLS_THOUGHTSPOT_DEFAULT_ORG: 86797424
-
-    # THE NAME OF YOUR BRANCH / THOUGHTSPOT ENVIRONMENT.
-    TS_ENV_NAME: dev-2
-    # THE ID OF THE ORG (THOUGHTSPOT ENVIRONMENT MATCHING ENV_NAME).
-    TS_SOURCE_ORG_ID: 86797424
-    # THE NAME OF THE TAG MARKING YOUR OBJECTS AS VERSION CONTROLLED.
-    TS_OBJECT_TAG: Testing
-    # THE MESSAGE TO ATTACH TO THE GIT COMMIT COMMAND.
+    
+    DIRECTORY: ${{ github.event_name == 'workflow_dispatch' && inputs.directory || 'dogfood' }}
+    TS_ENV_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.env_name || 'ts-dev2' }}
+    TS_SOURCE_ORG_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.source_org || 'ArjunBiradar-dev' }}
+    TS_METADATA_TYPES: ${{ github.event_name == 'workflow_dispatch' && inputs.metadata_types || 'ALL' }}
+    TS_OBJECT_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tags || 'testing' }}
     TS_COMMIT_MESSAGE: "AUTOMATED >> TS-CI '${{ github.event.workflow }}' @ ${{ github.event.repository.updated_at }}"
-
 
 jobs:
   run_commit_api: 
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      
     steps:
-      - name: Checking ${{ env.TS_ENV_NAME }} branch
+      - name: Checkout ${{ env.TS_ENV_NAME }} branch
         uses: actions/checkout@v4
         with:
           ref: ${{ env.TS_ENV_NAME }}
+          token: ${{ secrets.G_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -46,5 +72,26 @@ jobs:
       - name: Install CS Tools
         run: pip install "cs_tools[cli] @ https://github.com/thoughtspot/cs_tools/archive/${{ env.CS_TOOLS_VERSION }}.zip"
 
-      - name: Run the GIT COMMIT command
-        run: "cs_tools tools git branches commit --tag ${{ env.TS_OBJECT_TAG }} --comment \"${{ env.TS_COMMIT_MESSAGE }}\" --org ${{ env.TS_SOURCE_ORG_ID }} --config ENV:"
+      - name: Export TML Files
+        run: |
+          cs_tools tools scriptability checkpoint \
+            --directory "${{ env.DIRECTORY }}/" \
+            --environment "${{ env.TS_ENV_NAME }}" \
+            --metadata-types ${{ env.TS_METADATA_TYPES }} \
+            --tags "${{ env.TS_OBJECT_TAG }}" \
+            --org "${{ env.TS_SOURCE_ORG_ID }}" \
+            --config ENV:
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: Commit Changes
+        run: |
+          git add ${{ env.DIRECTORY }}/
+          git commit -m "${{ env.TS_COMMIT_MESSAGE }}"
+
+      - name: Push Changes
+        run: |
+          git push origin ${{ env.TS_ENV_NAME }}
