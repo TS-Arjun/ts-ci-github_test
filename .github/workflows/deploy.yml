@@ -3,35 +3,92 @@ name: Deploy Changes
 on:
   # ALLOW TRIGGERING ACTION MANUALLY
   workflow_dispatch:
+    inputs:
+      cs_tools_version:
+        description: "The CS Tools version to target for a manual run."
+        required: false
+        type: string
+
+      source_environment:
+        description: "The name of the environment you're deploying TML from."
+        required: false
+        type: string
+
+      target_environment:
+        description: "The name of the new environment you're deploying TML to."
+        required: true
+        type: string
+
+      source_org:
+        description: "The Org to switch to before performing action."
+        required: true
+        type: string
+        default: Secondry
+
+      metadata_types:
+        description: "The type(s) of TML to export, commad separated."
+        required: true
+        type: string
+        default: ALL
+
+      tags:
+        description: "TML tagged with these name(s), commad separated."
+        required: false
+        type: string
+
+      directory:
+        description: "Directory to load TML files from."
+        required: true
+        type: string
 
   # AFTER A PULL REQUEST IS MERGED / CLOSED
-  pull_request:
-    types: [closed]
+  # pull_request:
+  #   types: [closed]
 
 
 env:
     # CS TOOLS IS COMMAND LINE LIBRARY WRAPPING TS APIS
     # https://thoughtspot.github.io/cs_tools/tools/git/
-    CS_TOOLS_VERSION: v1.5.10
+    CS_TOOLS_VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.cs_tools_version || 'v1.6.1' }}
     CS_TOOLS_THOUGHTSPOT__URL: ${{ secrets.PRD_THOUGHTSPOT_URL }}
     CS_TOOLS_THOUGHTSPOT__USERNAME: ${{ secrets.PRD_THOUGHTSPOT_USERNAME }}
     CS_TOOLS_THOUGHTSPOT__SECRET_KEY: ${{ secrets.PRD_THOUGHTSPOT_SECRET_KEY }}
 
+
+    DIRECTORY: ${{ github.event_name == 'workflow_dispatch' && inputs.directory || 'dogfood' }}
+    TS_SOURCE_ENV_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.source_environment || 'ts-dev2' }}
+    TS_TARGET_ENV_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.target_environment || 'ts-prod' }}
+    TS_DESTINATION_ORG_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.source_org || 'ArjunBiradar' }}
+    TS_METADATA_TYPES: ${{ github.event_name == 'workflow_dispatch' && inputs.metadata_types || 'ALL' }}
+    TS_OBJECT_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tags || 'testing' }}
+    TS_COMMIT_MESSAGE: "AUTOMATED >> TS-CI '${{ github.event.workflow }}' @ ${{ github.event.repository.updated_at }}"
+    TS_CONTENT_AUTHOR: ""
+    TS_SHARE_TO_GROUP: ""
+    TS_DEPLOY_TYPE: "DELTA"
+    TS_DEPLOY_POLICY: "ALL_OR_NONE"
+    TS_SHARE_MODE: "READ_ONLY"
+
     # THE NAME OF YOUR BRANCH / THOUGHTSPOT ENVIRONMENT.
-    TS_ENV_NAME: ts-prod
+    # TS_ENV_NAME: ts-prod
     # THE ID OF THE ORG (THOUGHTSPOT ENVIRONMENT MATCHING ENV_NAME).
-    TS_DESTINATION_ORG_ID: 1423467985
+    # TS_DESTINATION_ORG_ID: 1423467985
     
 
 jobs:
   run_deploy_api:
-    if: github.event.pull_request.merged && github.event.pull_request.base.ref == '${{ github.env.TS_ENV_NAME }}'
+    # if: github.event.pull_request.merged && github.event.pull_request.base.ref == '${{ github.env.TS_TRG_ENV_NAME }}'
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      
     steps:
-      - name: checking ${{ env.TS_ENV_NAME }} branch
+      - name: checking ${{ env.TS_SOURCE_ENV_NAME }} branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ env.TS_ENV_NAME }}
+          ref: ${{ env.TS_SOURCE_ENV_NAME }}
+          token: ${{ secrets.G_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,5 +98,70 @@ jobs:
       - name: Install CS Tools
         run: pip install "cs_tools[cli] @ https://github.com/thoughtspot/cs_tools/archive/${{ env.CS_TOOLS_VERSION }}.zip"
 
-      - name: Run the GIT DEPLOY command
-        run: "cs_tools tools git branches deploy --branch-name ${{ env.TS_ENV_NAME }} --org ${{ env.TS_DESTINATION_ORG_ID }} --config ENV:"
+
+      - name: Deploy TML to ThoughtSpot
+        run: |
+          cs_tools tools scriptability deploy \
+            --directory "${DIRECTORY}" \
+            --source-environment "${TS_SOURCE_ENV_NAME}" \
+            --target-environment "${TS_TARGET_ENV_NAME}" \
+            --deploy-type "${TS_DEPLOY_TYPE}" \
+            --deploy-policy "${TS_DEPLOY_POLICY}" \
+            --metadata-types "${TS_METADATA_TYPES}" \
+            --tags "${TS_OBJECT_TAG}" \
+            --org "${TS_DESTINATION_ORG_ID}" \
+            --log-errors \
+            --config "ENV:"
+
+      - name: Transfer Content Ownership
+        run: |
+          if [ -n "${{ env.TS_CONTENT_AUTHOR }}" ]; then
+            echo "Transferring ownership to ${{ env.TS_CONTENT_AUTHOR }}"
+            cs_tools tools user-management transfer \
+              --tags "${{ env.TS_OBJECT_TAG }}" \
+              --to "${{ env.TS_CONTENT_AUTHOR }}" \
+              --org "${{ env.TS_DESTINATION_ORG_ID }}" \
+              --config "ENV:"
+          else
+            echo "Skipping ASSIGN_CONTENT_AUTHOR as TS_CONTENT_AUTHOR is empty."
+          fi
+
+      - name: Share Content with Groups
+        run: |
+          if [ -n "${{ env.TS_SHARE_TO_GROUP }}" ]; then
+            echo "Sharing content with ${{ env.TS_SHARE_TO_GROUP }}"
+            cs_tools tools bulk-sharing from-tag \
+              --tag "${{ env.TS_OBJECT_TAG }}" \
+              --groups "${{ env.TS_SHARE_TO_GROUP }}" \
+              --share-mode "${{ env.TS_SHARE_MODE }}" \
+              --no-prompt \
+              --org "${{ env.TS_DESTINATION_ORG_ID }}" \
+              --config "ENV:"
+          else
+            echo "Skipping SHARING_CONTENT as TS_SHARE_TO_GROUP is empty."
+          fi
+
+      - name: Remove Temporary Tags
+        run: |
+          echo "Removing temporary tags"
+          cs_tools tools bulk-deleter from-tag \
+            --tag "${{ env.TS_OBJECT_TAG }}" \
+            --tag-only \
+            --no-prompt \
+            --org "${{ env.TS_DESTINATION_ORG_ID }}" \
+            --config "ENV:"
+
+      - name: Commit and Push TMLs
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add "${{ env.DIRECTORY }}/"
+          git commit -m "Update TML files [skip ci]" || echo "No changes to commit"
+          git push
+          
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tml-files
+          path: ${{ env.DIRECTORY }}/
