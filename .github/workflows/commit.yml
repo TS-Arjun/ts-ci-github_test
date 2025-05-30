@@ -43,10 +43,10 @@ env:
     CS_TOOLS_THOUGHTSPOT__SECRET_KEY: ${{ secrets.DEV_THOUGHTSPOT_SECRET_KEY }}
     
     DIRECTORY: ${{ github.event_name == 'workflow_dispatch' && inputs.directory || 'dogfood' }}
-    TS_ENV_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.env_name || 'ts-dev2' }}
-    TS_SOURCE_ORG_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.source_org || 'ArjunBiradar-dev' }}
+    TS_ENV_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.env_name || 'ts-dev' }}
+    TS_SOURCE_ORG_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.source_org || 'ArjunB' }}
     TS_METADATA_TYPES: ${{ github.event_name == 'workflow_dispatch' && inputs.metadata_types || 'ALL' }}
-    TS_OBJECT_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tags || 'testing' }}
+    TS_OBJECT_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tags || 'migrate' }}
     TS_COMMIT_MESSAGE: "AUTOMATED >> TS-CI '${{ github.event.workflow }}' @ ${{ github.event.repository.updated_at }}"
 
 jobs:
